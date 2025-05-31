@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource-variable/inter/index.css";
+
+body {
+  font-family: "InterVariable", sans-serif;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -114,6 +119,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
