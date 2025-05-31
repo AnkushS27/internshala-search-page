@@ -385,7 +385,6 @@ export default function InternshipSearch() {
       if (filters.startDate) {
         // For demo purposes, we'll assume all internships can start based on selection
         // In real implementation, you'd compare with actual start dates from the data
-        const now = new Date();
         let canStart = true;
 
         switch (filters.startDate) {
@@ -435,14 +434,26 @@ export default function InternshipSearch() {
   }, [internships, filters]);
 
   const InternshipCard = ({ internship }: { internship: Internship }) => (
-    <Card className="hover:shadow-md transition-shadow cursor-pointer">
+    <Card className="hover:shadow-md transition-shadow hover:scale-[1.005] cursor-pointer">
       <CardContent className="p-4">
         <div className="flex justify-between items-start mb-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+            <div>
+              <h3 className="font-semibold text-lg">{internship.title}</h3>
+              <p className="text-gray-600 text-sm inline-flex items-center gap-2">{internship.company_name} <span className="flex gap-1">
+            {internship.labels_app_in_card?.map((label, index) => (
+              <Badge key={index} variant="secondary" className="text-xs">
+                {label}
+              </Badge>
+            ))}
+          </span></p>
+            </div>
+            
+          </div>
+          <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
               {internship.company_logo ? (
                 <img
-                  src={`https://internshala-uploads.internshala.com/logo%2F${internship.company_logo}`}
+                  src={`https://internshala-uploads.internshala.com/logo/${internship.company_logo}`}
                   alt={internship.company_name}
                   className="w-8 h-8 object-contain"
                   onError={(e) => {
@@ -458,18 +469,6 @@ export default function InternshipSearch() {
                 }`}
               />
             </div>
-            <div>
-              <h3 className="font-semibold text-lg">{internship.title}</h3>
-              <p className="text-gray-600 text-sm">{internship.company_name}</p>
-            </div>
-          </div>
-          <div className="flex gap-1">
-            {internship.labels_app_in_card?.map((label, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
-                {label}
-              </Badge>
-            ))}
-          </div>
         </div>
 
         <div className="space-y-2 text-sm text-gray-600">
