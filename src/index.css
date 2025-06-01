@@ -4,7 +4,7 @@
 
 body {
   font-family: "InterVariable", sans-serif;
-  overflow-x: hidden;
+  color: "#333";
 }
 
 @custom-variant dark (&:is(.dark *));

@@ -1,16 +1,5 @@
 import React from "react";
-
-interface FooterLink {
-  label: string;
-  href: string;
-  badge?: "NEW" | "OFFER";
-}
-
-interface FooterColumn {
-  title: string;
-  links: FooterLink[];
-  badge?: "NEW" | "OFFER";
-}
+import type { FooterColumn } from "@/types/type";
 
 const Footer: React.FC = () => {
   // Data for the top section columns

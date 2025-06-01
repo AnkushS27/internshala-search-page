@@ -25,7 +25,7 @@ const FilterSection = ({
   filters: typeof initialFilters;
   setFilters: React.Dispatch<React.SetStateAction<typeof initialFilters>>;
 }) => (
-  <div className="space-y-6 bg-white rounded-lg p-6">
+  <div className="space-y-6 shadow-sm bg-white rounded-lg p-6">
     <div className="flex items-center justify-center gap-2 text-lg font-semibold">
       <Filter className="h-5 w-5 text-[#008bdc]" />
       Filters

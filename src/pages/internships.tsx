@@ -181,7 +181,7 @@ export default function InternshipSearch() {
   }, [internships, filters]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative min-h-screen w-screen bg-gray-50">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <Breadcrumb>
@@ -202,11 +202,11 @@ export default function InternshipSearch() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex gap-8">
           {/* Desktop Filters Sidebar */}
-          <aside className="hidden lg:block w-80 h-fit sticky top-4">
+          <aside className="hidden lg:block w-96 h-fit sticky top-4">
             <div className="flex flex-col">
               <FilterSection filters={filters} setFilters={setFilters} />
               {/* Keyword Search */}
-              <div className="mt-6 bg-white rounded-lg p-6">
+              <div className="mt-6 bg-white shadow-sm rounded-lg p-6">
                 <label className="text-sm font-medium mb-2 block">
                   Keyword Search
                 </label>
@@ -234,9 +234,9 @@ export default function InternshipSearch() {
           </aside>
 
           {/* Main Content */}
-          <main className="flex-1">
+          <main className="w-full">
             {/* Results Header */}
-            <div className="bg-white rounded-lg p-6 mb-6">
+            <div className="bg-white shadow-sm rounded-md p-6 mb-6">
               <h1 className="text-2xl font-bold mb-2">
                 {filteredInternships.length} Total Internships
               </h1>
@@ -263,9 +263,6 @@ export default function InternshipSearch() {
                     <FilterSection filters={filters} setFilters={setFilters} />
                   </SheetContent>
                 </Sheet>
-
-                <Button variant="outline">As per my preferences</Button>
-                <Button variant="outline">Profile</Button>
               </div>
 
               {/* Keyword Search */}
@@ -296,7 +293,7 @@ export default function InternshipSearch() {
             </div>
 
             {/* Internship Listings */}
-            <div className="space-y-4">
+            <div className="space-y-4 w-full min-w-[300px]">
               {loading ? (
                 <div className="text-center py-8">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#008bdc] mx-auto"></div>

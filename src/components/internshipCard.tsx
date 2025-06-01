@@ -90,7 +90,7 @@ const InternshipCard: React.FC<InternshipCardProps> = ({
           )}
         </div>
 
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-4 w-fit">
           <div
             className={`flex items-center gap-1 text-xs px-2 py-1 rounded-md flex-grow min-w-0 ${ 
               internship.posted_by_label_type === "success"

@@ -41,3 +41,15 @@ export const initialFilters = {
   withJobOffer: false,
   keyword: "",
 };
+
+export interface FooterLink {
+  label: string;
+  href: string;
+  badge?: "NEW" | "OFFER";
+}
+
+export interface FooterColumn {
+  title: string;
+  links: FooterLink[];
+  badge?: "NEW" | "OFFER";
+}
