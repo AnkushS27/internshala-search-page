@@ -78,6 +78,13 @@ const initialFilters = {
   keyword: "",
 };
 
+// Helper function to format value for display
+const formatStipendValue = (value: number): string => {
+  if (value === 0) return "0";
+  if (value >= 10000) return "10K+";
+  return `${value / 1000}K`;
+};
+
 const FilterSection = ({
   filters,
   setFilters,
@@ -175,27 +182,43 @@ const FilterSection = ({
       </div>
 
       <div>
-        <label className="text-sm font-medium mb-3 block">
-          Desired minimum monthly stipend (₹)
-        </label>
-        <Slider
-          value={filters.minStipend}
-          onValueChange={(value) =>
-            setFilters((prev) => ({ ...prev, minStipend: value }))
-          }
-          max={50000}
-          step={1000}
-          className="w-full"
-        />
-        <div className="flex justify-between text-xs text-gray-500 mt-1">
-          <span>0</span>
-          <span>2K</span>
-          <span>4K</span>
-          <span>6K</span>
-          <span>8K</span>
-          <span>10K</span>
-        </div>
-      </div>
+  <label className="text-sm font-medium mb-3 block">
+    Desired minimum monthly stipend (₹)
+  </label>
+  
+  <div className="relative">
+    <Slider
+      value={filters.minStipend}
+      onValueChange={(value) =>
+        setFilters((prev) => ({ ...prev, minStipend: value }))
+      }
+      max={10000}
+      step={2000}
+      className="w-full"
+    />
+    
+    {/* Tooltip showing current value */}
+    <div 
+      className="absolute -top-8 bg-[#008bdc] text-white text-xs px-2 py-1 rounded pointer-events-none transition-all duration-200"
+      style={{
+        left: `${(filters.minStipend[0] / 10000) * 100}%`,
+        transform: 'translateX(-50%)'
+      }}
+    >
+      ₹{formatStipendValue(filters.minStipend[0])}
+    </div>
+  </div>
+  
+  {/* Correctly mapped breakpoints */}
+  <div className="flex justify-between text-xs text-gray-500 mt-1">
+    <span>0</span>
+    <span>2K</span>
+    <span>4K</span>
+    <span>6K</span>
+    <span>8K</span>
+    <span>10K+</span>
+  </div>
+</div>
 
       <Accordion type="single" collapsible>
         <AccordionItem value="more-filters">
@@ -488,8 +511,7 @@ export default function InternshipSearch() {
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1">
-              <span className="font-medium">₹</span>
-              <span>{internship.stipend.salary}</span>
+              {internship.stipend.salary}
             </div>
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
