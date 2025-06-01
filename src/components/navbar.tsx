@@ -51,7 +51,7 @@ const JobsDropdown = () => {
   return (
     <NavigationMenuItem className="h-18">
       <NavigationMenuTrigger className="h-18 hover:text-[#008bdc]">Jobs</NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[600px] min-h-[350px]">
+      <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[450px] min-h-[350px]">
         <div className="flex">
           {/* Left Tabs */}
           <div className="pr-6 w-1/2 flex flex-col gap-3 text-sm">
@@ -125,7 +125,7 @@ const InternshipsDropdown = () => {
   return (
     <NavigationMenuItem className="h-18">
       <NavigationMenuTrigger className="h-18 hover:text-[#008bdc]">Internships</NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[600px] min-h-[300px]">
+      <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[450px] min-h-[300px]">
         <div className="flex">
           {/* Left Tabs */}
           <div className="pr-6 w-1/2 flex flex-col gap-3 text-sm">
@@ -341,7 +341,7 @@ const Header = () => {
                     <Badge variant="offer">OFFER</Badge>
                   </span>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[600px] min-h-[300px]">
+                <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[450px] min-h-[300px]">
                   <div className="flex divide-x">
                     <div className="pr-6 w-1/2 flex flex-col gap-2 text-sm">
                       <span className="font-semibold text-black">Certification Courses</span>
