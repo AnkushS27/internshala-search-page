@@ -14,6 +14,7 @@ import { Menu } from "lucide-react"
 import { Button } from "./ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
+import { useDropdown } from '@/lib/dropdownContext';
 
 type JobTab = "Top Locations" | "Top Categories" | "Explore More Jobs"
 
@@ -50,7 +51,7 @@ const JobsDropdown = () => {
   return (
     <NavigationMenuItem className="h-18">
       <NavigationMenuTrigger className="h-18 hover:text-[#008bdc]">Jobs</NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-white p-4 shadow-md rounded-md min-w-[600px] min-h-[300px]">
+      <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[600px] min-h-[350px]">
         <div className="flex">
           {/* Left Tabs */}
           <div className="pr-6 w-1/2 flex flex-col gap-3 text-sm">
@@ -124,7 +125,7 @@ const InternshipsDropdown = () => {
   return (
     <NavigationMenuItem className="h-18">
       <NavigationMenuTrigger className="h-18 hover:text-[#008bdc]">Internships</NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-white p-4 shadow-md rounded-md min-w-[600px] min-h-[350px]">
+      <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[600px] min-h-[300px]">
         <div className="flex">
           {/* Left Tabs */}
           <div className="pr-6 w-1/2 flex flex-col gap-3 text-sm">
@@ -162,7 +163,7 @@ const InternshipsDropdown = () => {
 // Mobile Navigation Component
 const MobileNavigation = () => {
   return (
-    <div className="flex flex-col w-full space-y-4">
+    <div className="flex p-6 flex-col w-full space-y-4">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="internships">
           <AccordionTrigger className="py-3">Internships</AccordionTrigger>
@@ -291,9 +292,29 @@ const MobileNavigation = () => {
 }
 
 const Header = () => {
+  const { setDropdownOpen } = useDropdown(); // Use the context hook [cite: 1]
+
   return (
-    <header className="flex justify-center items-center w-full bg-white h-18">
-      <div className="flex items-center max-w-[1210px] w-full justify-between px-4 md:px-6">
+    <header className="flex justify-center items-center w-full bg-white h-18 relative z-50"> {/* Add relative z-50 */}
+      <div className="flex items-center max-w-[1200px] w-full justify-between px-4 md:px-6">
+        <div className="flex md:hidden items-center gap-4">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-10 w-10">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[300px] sm:w-[350px]">
+              <div className="flex flex-col h-full">
+                <div className="flex-1 py-4">
+                  <MobileNavigation />
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+
         {/* Logo */}
         <div className="flex items-center gap-4">
           <img
@@ -307,7 +328,7 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6 h-18">
-          <NavigationMenu className="h-18">
+          <NavigationMenu className="h-18" onValueChange={(value) => setDropdownOpen(!!value)}> {/* [cite: 1] */}
             <NavigationMenuList className="h-18">
               {/* Internships Dropdown */}
               <InternshipsDropdown />
@@ -320,7 +341,7 @@ const Header = () => {
                     <Badge variant="offer">OFFER</Badge>
                   </span>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-white p-4 shadow-md rounded-md min-w-[600px] min-h-[300px]">
+                <NavigationMenuContent className="bg-white p-4 rounded-md md:min-w-[600px] min-h-[300px]">
                   <div className="flex divide-x">
                     <div className="pr-6 w-1/2 flex flex-col gap-2 text-sm">
                       <span className="font-semibold text-black">Certification Courses</span>
@@ -338,7 +359,7 @@ const Header = () => {
                           {label}
                         </NavigationMenuLink>
                       ))}
-                      <NavigationMenuLink href="#" className="hover:underline font-semibold">
+                      <NavigationMenuLink href="#" className="font-semibold">
                         View 70+ more courses
                       </NavigationMenuLink>
                     </div>
@@ -378,26 +399,6 @@ const Header = () => {
           <button className="mr-2">
             <img src="message_new_hover.svg" width="24" height="24" className="h-6 w-6" alt="Message Icon" />
           </button>
-
-          <button className="w-8 h-8 flex items-center justify-center rounded-full border text-sm font-semibold mr-2">
-            A
-          </button>
-
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-10 w-10">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-              <div className="flex flex-col h-full">
-                <div className="flex-1 py-4">
-                  <MobileNavigation />
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </header>
