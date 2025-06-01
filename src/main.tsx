@@ -5,9 +5,11 @@ import App from "./App.tsx";
 import Header from "./components/navbar.tsx";
 import { DropdownProvider } from "./lib/dropdownContext.tsx";
 import Footer from "./components/footer.tsx";
+import { Analytics } from "@vercel/analytics/react"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Analytics />
     <DropdownProvider>
       <Header />
       <App />
