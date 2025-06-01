@@ -1,0 +1,43 @@
+import type { Internship } from "@/types/type";
+export const mockInternships: Internship[] = [
+  {
+    id: 1,
+    title: "Administration Intern",
+    company_name: "Google",
+    company_logo: "",
+    profile_name: "Administration",
+    location_names: ["Delhi"],
+    work_from_home: false,
+    duration: "2 Months",
+    stipend: {
+      salary: "₹ 20,000 /month",
+      salaryValue1: 20000,
+    },
+    posted_by_label: "1 day ago",
+    posted_by_label_type: "success",
+    labels_app_in_card: ["Internship"],
+    part_time: false,
+    is_international_job: false,
+    office_days: null,
+  },
+  {
+    id: 2,
+    title: "Data Science Intern",
+    company_name: "TechCorp",
+    company_logo: "",
+    profile_name: "Data Science",
+    location_names: [],
+    work_from_home: true,
+    duration: "3 Months",
+    stipend: {
+      salary: "₹ 25,000 /month",
+      salaryValue1: 25000,
+    },
+    posted_by_label: "2 days ago",
+    posted_by_label_type: "info",
+    labels_app_in_card: ["Internship"],
+    part_time: false,
+    is_international_job: false,
+    office_days: null,
+  },
+]
